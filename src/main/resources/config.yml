@@ -1,0 +1,29 @@
+# Discord Stuff
+enabled: true # Enable discord bot?
+token: "" # Discord bot token
+server: "" # ID of discord server
+channel: "" # ID of channel where messages are sent
+
+# Minecraft server display-name
+server-name: "bolt" # Server name
+
+# What types of message should be enabled
+types:
+  reports: true
+  relay-command: true
+
+# Reports (Sent from PGM)
+#
+# Variables
+# %server%   - Server Name
+# %reporter% - Player who issued report
+# %reported% - Player who has been reported
+# %reason%   - Reason for report
+report-format: "[%server%] %reporter% reported %reported%: %reason%"
+
+# Relay - Command based (Used for AutoKiller and via /relay)
+#
+# Variables
+# %server%   - Server Name
+# %message%  - Message provided
+relay-format: "[%server%] %message%"

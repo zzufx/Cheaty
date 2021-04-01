@@ -1,0 +1,6 @@
+name: Bolty
+main: tc.oc.occ.bolt.Bolty
+description: A minecraft to discord bot
+version: ${project.version}
+author: applenick
+softdepend: [PGM, Matrix, AutoKiller]
