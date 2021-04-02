@@ -115,12 +115,18 @@
 							<pattern>co.aikar.commands</pattern>
 							<shadedPattern>tc.oc.occ.bolt.lib.acf</shadedPattern>
 						</relocation>
-
 						<relocation>
 							<pattern>org.apache.logging.log4j</pattern>
 							<shadedPattern>tc.oc.occ.bolt.lib.logger</shadedPattern>
+						</relocation>												
+						<relocation>
+							<pattern>okhttp3</pattern>
+							<shadedPattern>tc.oc.occ.bolt.lib.okhttp3</shadedPattern>
 						</relocation>
-
+						<relocation>
+							<pattern>okio</pattern>
+							<shadedPattern>tc.oc.occ.bolt.lib.okio</shadedPattern>
+						</relocation>
 					</relocations>
 				</configuration>
 				<executions>
