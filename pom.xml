@@ -118,7 +118,7 @@
 						<relocation>
 							<pattern>org.apache.logging.log4j</pattern>
 							<shadedPattern>tc.oc.occ.bolt.lib.logger</shadedPattern>
-						</relocation>												
+						</relocation>
 						<relocation>
 							<pattern>okhttp3</pattern>
 							<shadedPattern>tc.oc.occ.bolt.lib.okhttp3</shadedPattern>
@@ -126,6 +126,10 @@
 						<relocation>
 							<pattern>okio</pattern>
 							<shadedPattern>tc.oc.occ.bolt.lib.okio</shadedPattern>
+						</relocation>
+						<relocation>
+							<pattern>com.fasterxml</pattern>
+							<shadedPattern>tc.oc.occ.bolt.lib.jackson</shadedPattern>
 						</relocation>
 					</relocations>
 				</configuration>
