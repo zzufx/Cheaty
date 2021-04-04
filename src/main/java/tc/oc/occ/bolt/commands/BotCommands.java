@@ -8,6 +8,7 @@ import co.aikar.commands.annotation.CommandPermission;
 import co.aikar.commands.annotation.Dependency;
 import co.aikar.commands.annotation.Syntax;
 import tc.oc.occ.bolt.DiscordBot;
+import tc.oc.occ.bolt.DiscordBot.RelayType;
 
 public class BotCommands extends BaseCommand {
 	
@@ -17,7 +18,7 @@ public class BotCommands extends BaseCommand {
 	@Syntax("[message] - Message to relay to discord")
 	@CommandPermission("bolt.bot")
 	public void relay(CommandSender sender, String message) {
-		bot.sendRelay(message);
+		bot.sendRelay(message, RelayType.COMMAND);
 	}
 
 }

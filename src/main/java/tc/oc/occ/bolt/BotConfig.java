@@ -18,6 +18,11 @@ public class BotConfig {
 	private String reportFormat;
 	private String relayFormat;
 	
+	private String reportPrefix;
+	private String autoKillPrefix;
+	private String matrixPrefix;
+	private String commandPrefix;
+	
 	public BotConfig(Configuration config) {
 		reload(config);
 	}
@@ -35,6 +40,11 @@ public class BotConfig {
 		
 		this.reportFormat = config.getString("report-format");
 		this.relayFormat = config.getString("relay-format");
+		
+		this.reportPrefix = config.getString("prefix.report");
+		this.autoKillPrefix = config.getString("prefix.autokill");
+		this.matrixPrefix = config.getString("prefix.matrix");
+		this.commandPrefix = config.getString("prefix.command");
 	}
 
 	public boolean isEnabled() {
@@ -75,5 +85,21 @@ public class BotConfig {
 	
 	private String replaceServerName(String format) {
 		return format.replace("%server%", getServerName());
+	}
+	
+	public String getReportPrefix() {
+		return reportPrefix;
+	}
+	
+	public String getAutoKillPrefix() {
+		return autoKillPrefix;
+	}
+	
+	public String getMatrixPrefix() {
+		return matrixPrefix;
+	}
+
+	public String getCommandPrefix() {
+		return commandPrefix;
 	}
 }

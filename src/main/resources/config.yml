@@ -19,7 +19,7 @@ types:
 # %reporter% - Player who issued report
 # %reported% - Player who has been reported
 # %reason%   - Reason for report
-report-format: "[%server%] %reporter% reported %reported%: %reason%"
+report-format: "[%server%] **%reporter% reported %reported%: %reason%**"
 
 # Relay - Command based (Used for AutoKiller and via /relay)
 #
@@ -27,3 +27,10 @@ report-format: "[%server%] %reporter% reported %reported%: %reason%"
 # %server%   - Server Name
 # %message%  - Message provided
 relay-format: "[%server%] %message%"
+
+# Prefix - Emojis used as a prefix for different message types
+prefix:
+  report: ":loudspeaker: "
+  autokill: ":mouse_three_button: "
+  matrix: ":warning: "
+  command: ""

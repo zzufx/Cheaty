@@ -19,6 +19,10 @@ public class DiscordBot {
 		this.logger = logger;
 		reload();
 	}
+	
+	public BotConfig getConfig() {
+		return config;
+	}
 
 	public void enable() {
 		if(config.isEnabled()) {
@@ -70,13 +74,13 @@ public class DiscordBot {
 				.replace("%reporter%", reporter)
 				.replace("%reported%", reported)
 				.replace("%reason%", reason);
-		sendMessage(formatted);
+		sendMessage(config.getReportPrefix() + formatted);		
 	}
 
-	public void sendRelay(String message) {
+	public void sendRelay(String message, RelayType type) {
 		if(!config.isRelayCommand()) return;
 		String formatted = config.getRelayFormat().replace("%message%", message);
-		sendMessage(formatted);
+		sendMessage(getPrefix(type) + formatted);
 	}
 
 	public void reload() {
@@ -91,6 +95,23 @@ public class DiscordBot {
 		text = ChatColor.translateAlternateColorCodes('&', text);
 		text = ChatColor.stripColor(text);
 		return text;
+	}
+	
+	public String getPrefix(RelayType type) {
+		switch(type) {
+		case AUTOKILL:
+			return config.getAutoKillPrefix();
+		case MATRIX:
+			return config.getMatrixPrefix();
+		default:
+			return config.getCommandPrefix();
+		}
+	}
+	
+	public static enum RelayType {
+		AUTOKILL,
+		MATRIX,
+		COMMAND;
 	}
 
 }
