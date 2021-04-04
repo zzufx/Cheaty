@@ -4,6 +4,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
 import net.climaxmc.autokiller.events.AutoKillCheatEvent;
+import tc.oc.morpheus.NotifyCommandEvent;
 import tc.oc.pgm.community.events.PlayerReportEvent;
 
 public class BotListener implements Listener {
@@ -18,10 +19,14 @@ public class BotListener implements Listener {
 		bot.sendReport(event);
 	}
 	
-	
 	@EventHandler
 	public void onAutoKillerViolation(AutoKillCheatEvent event) {
 		bot.sendRelay(event.getAlert());
+	}
+	
+	@EventHandler
+	public void onMorpheusNotify(NotifyCommandEvent event) {
+		bot.sendRelay(event.getCommand());
 	}
 
 }

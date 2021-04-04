@@ -64,6 +64,14 @@
 			<version>2.6.1-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		<!-- Morpheus - https://github.com/OvercastCommunity/Morpheus -->
+		<dependency>
+			<groupId>oc.tc</groupId>
+			<artifactId>Morpheus</artifactId>
+			<version>1.0.1-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>

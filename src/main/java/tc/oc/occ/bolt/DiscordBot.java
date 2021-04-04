@@ -54,7 +54,7 @@ public class DiscordBot {
 			api.getServerById(config.getServerId()).ifPresent(server -> {
 				server.getChannelById(config.getChannel()).ifPresent(channel -> {
 					channel.asTextChannel().ifPresent(text -> {
-						text.sendMessage(ChatColor.stripColor(message));
+						text.sendMessage(format(message));
 					});
 				});
 			});
@@ -85,6 +85,12 @@ public class DiscordBot {
 		} else if(this.api == null && config.isEnabled()) {
 			enable();
 		}
+	}
+	
+	private String format(String text) {
+		text = ChatColor.translateAlternateColorCodes('&', text);
+		text = ChatColor.stripColor(text);
+		return text;
 	}
 
 }
