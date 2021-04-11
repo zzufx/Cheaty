@@ -94,7 +94,8 @@ public class DiscordBot {
 	private String format(String text) {
 		text = ChatColor.translateAlternateColorCodes('&', text);
 		text = ChatColor.stripColor(text);
-		return text;
+		text = text.replace("@", "");
+		return text.trim();
 	}
 	
 	public String getPrefix(RelayType type) {
