@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>tc.oc.occ</groupId>
 	<artifactId>Bolty</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.3-SNAPSHOT</version>
 	<name>Bolty</name>
 	<description>A minecraft to discord java plugin for Bolt</description>
 

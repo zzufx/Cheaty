@@ -2,10 +2,13 @@
 enabled: true # Enable discord bot?
 token: "" # Discord bot token
 server: "" # ID of discord server
-channel: "" # ID of channel where messages are sent
 
 # Minecraft server display-name
 server-name: "bolt" # Server name
+
+channels:
+  reports: "" # ID of channel where reports are sent
+  anticheat: "" # ID of channel where autocheat alerts are sent
 
 # What types of message should be enabled
 types:

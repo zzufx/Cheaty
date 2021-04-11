@@ -53,10 +53,10 @@ public class DiscordBot {
 		this.api = null;
 	}
 
-	private void sendMessage(String message) {
+	private void sendMessage(String message, boolean report) {
 		if(api != null) {
 			api.getServerById(config.getServerId()).ifPresent(server -> {
-				server.getChannelById(config.getChannel()).ifPresent(channel -> {
+				server.getChannelById(report ? config.getReportChannel() : config.getAntiCheatChannel()).ifPresent(channel -> {
 					channel.asTextChannel().ifPresent(text -> {
 						text.sendMessage(format(message));
 					});
@@ -74,13 +74,13 @@ public class DiscordBot {
 				.replace("%reporter%", reporter)
 				.replace("%reported%", reported)
 				.replace("%reason%", reason);
-		sendMessage(config.getReportPrefix() + formatted);		
+		sendMessage(config.getReportPrefix() + formatted, true);		
 	}
 
 	public void sendRelay(String message, RelayType type) {
 		if(!config.isRelayCommand()) return;
 		String formatted = config.getRelayFormat().replace("%message%", message);
-		sendMessage(getPrefix(type) + formatted);
+		sendMessage(getPrefix(type) + formatted, false);
 	}
 
 	public void reload() {
