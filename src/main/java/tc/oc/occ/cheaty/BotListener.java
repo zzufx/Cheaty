@@ -1,11 +1,11 @@
-package tc.oc.occ.bolt;
+package tc.oc.occ.cheaty;
 
 import dev.pgm.community.events.PlayerReportEvent;
 import net.climaxmc.autokiller.events.AutoKillCheatEvent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import tc.oc.morpheus.NotifyCommandEvent;
-import tc.oc.occ.bolt.DiscordBot.RelayType;
+import tc.oc.occ.cheaty.DiscordBot.RelayType;
 
 public class BotListener implements Listener {
 

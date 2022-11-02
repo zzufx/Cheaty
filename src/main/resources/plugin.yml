@@ -1,5 +1,5 @@
-name: Bolty
-main: tc.oc.occ.bolt.Bolty
+name: Cheaty
+main: tc.oc.occ.cheaty.Cheaty
 description: A minecraft to discord bot
 version: ${project.version}
 author: applenick

@@ -1,4 +1,4 @@
-package tc.oc.occ.bolt;
+package tc.oc.occ.cheaty;
 
 import dev.pgm.community.assistance.Report;
 import dev.pgm.community.events.PlayerReportEvent;
@@ -42,7 +42,7 @@ public class DiscordBot {
                     listener -> {
                       logger.info(listener.getServer().getName() + " is now available");
                     });
-                logger.info("Discord Bot is now active!");
+                logger.info("Cheaty has connected to Discord!");
               });
     }
   }

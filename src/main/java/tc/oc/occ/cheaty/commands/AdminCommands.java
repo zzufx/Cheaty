@@ -1,4 +1,4 @@
-package tc.oc.occ.bolt.commands;
+package tc.oc.occ.cheaty.commands;
 
 import co.aikar.commands.BaseCommand;
 import co.aikar.commands.annotation.CommandAlias;
@@ -7,11 +7,11 @@ import co.aikar.commands.annotation.Dependency;
 import co.aikar.commands.annotation.Description;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
-import tc.oc.occ.bolt.Bolty;
+import tc.oc.occ.cheaty.Cheaty;
 
 public class AdminCommands extends BaseCommand {
 
-  @Dependency private Bolty plugin;
+  @Dependency private Cheaty plugin;
 
   @CommandAlias("bolty")
   @Description("Reload bolty config")

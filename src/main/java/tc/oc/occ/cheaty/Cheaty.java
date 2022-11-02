@@ -1,11 +1,11 @@
-package tc.oc.occ.bolt;
+package tc.oc.occ.cheaty;
 
 import co.aikar.commands.BukkitCommandManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import tc.oc.occ.bolt.commands.AdminCommands;
-import tc.oc.occ.bolt.commands.BotCommands;
+import tc.oc.occ.cheaty.commands.AdminCommands;
+import tc.oc.occ.cheaty.commands.BotCommands;
 
-public class Bolty extends JavaPlugin {
+public class Cheaty extends JavaPlugin {
 
   private DiscordBot bot;
   private BotConfig config;

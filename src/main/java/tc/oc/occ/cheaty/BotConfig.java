@@ -1,4 +1,4 @@
-package tc.oc.occ.bolt;
+package tc.oc.occ.cheaty;
 
 import org.bukkit.configuration.Configuration;
 
