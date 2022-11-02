@@ -1,10 +1,14 @@
 package tc.oc.occ.bolt;
 
+import dev.pgm.community.assistance.Report;
+import dev.pgm.community.events.PlayerReportEvent;
+import java.util.UUID;
 import java.util.logging.Logger;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
-import tc.oc.pgm.community.events.PlayerReportEvent;
 
 public class DiscordBot {
 
@@ -77,9 +81,10 @@ public class DiscordBot {
 
   public void sendReport(PlayerReportEvent event) {
     if (!config.isReportsEnabled()) return;
-    String reporter = event.getSender().getNameLegacy();
-    String reported = event.getPlayer().getNameLegacy();
-    String reason = event.getReason();
+    Report report = event.getReport();
+    String reporter = getUsername(report.getSenderId());
+    String reported = getUsername(report.getTargetId());
+    String reason = report.getReason();
     String formatted =
         config
             .getReportFormat()
@@ -87,6 +92,11 @@ public class DiscordBot {
             .replace("%reported%", reported)
             .replace("%reason%", reason);
     sendMessage(config.getReportPrefix() + formatted, true);
+  }
+
+  private String getUsername(UUID playerId) {
+    Player player = Bukkit.getPlayer(playerId);
+    return player != null ? player.getName() : null;
   }
 
   public void sendRelay(String message, RelayType type) {
