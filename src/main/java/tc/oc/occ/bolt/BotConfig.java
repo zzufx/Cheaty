@@ -6,13 +6,13 @@ public class BotConfig {
 	
 	private boolean enabled;
 	
-	private String token;
-	private String serverId;
+	private String discordToken;
+	private String discordServerId;
 	
 	private String serverName;
 	
-	private boolean reports;
-	private boolean relayCommand;
+	private boolean reportsEnabled;
+	private boolean relayCommandEnabled;
 	
 	private String reportFormat;
 	private String relayFormat;
@@ -31,13 +31,14 @@ public class BotConfig {
 	
 	public void reload(Configuration config) {
 		this.enabled = config.getBoolean("enabled");
-		this.token = config.getString("token");
-		this.serverId = config.getString("server");
+		this.discordToken = config.getString("token");
+		this.discordServerId = config.getString("server");
 		
-		this.serverName = config.getString("server-name");
-		
-		this.reports = config.getBoolean("types.reports");
-		this.relayCommand = config.getBoolean("types.relay-command");
+	    String serverEnv = System.getenv("SERVER_NAME");
+	    this.serverName = (serverEnv != null && !serverEnv.isEmpty()) ? serverEnv : config.getString("server-name");
+
+	    this.reportsEnabled = config.getBoolean("types.reports");
+		this.relayCommandEnabled = config.getBoolean("types.relay-command");
 		
 		this.reportFormat = config.getString("report-format");
 		this.relayFormat = config.getString("relay-format");
@@ -56,23 +57,23 @@ public class BotConfig {
 	}
 
 	public String getToken() {
-		return token;
+		return discordToken;
 	}
 
-	public String getServerId() {
-		return serverId;
+	public String getDiscordServerId() {
+		return discordServerId;
 	}
 
 	public String getServerName() {
 		return serverName;
 	}
 
-	public boolean isReports() {
-		return reports;
+	public boolean isReportsEnabled() {
+		return reportsEnabled;
 	}
 
-	public boolean isRelayCommand() {
-		return relayCommand;
+	public boolean isRelayCommandEnabled() {
+		return relayCommandEnabled;
 	}
 
 	public String getReportFormat() {

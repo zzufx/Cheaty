@@ -55,7 +55,7 @@ public class DiscordBot {
 
 	private void sendMessage(String message, boolean report) {
 		if(api != null) {
-			api.getServerById(config.getServerId()).ifPresent(server -> {
+			api.getServerById(config.getDiscordServerId()).ifPresent(server -> {
 				server.getChannelById(report ? config.getReportChannel() : config.getAntiCheatChannel()).ifPresent(channel -> {
 					channel.asTextChannel().ifPresent(text -> {
 						text.sendMessage(format(message));
@@ -66,7 +66,7 @@ public class DiscordBot {
 	}
 
 	public void sendReport(PlayerReportEvent event) {
-		if(!config.isReports()) return;
+		if(!config.isReportsEnabled()) return;
 		String reporter = event.getSender().getNameLegacy();
 		String reported = event.getPlayer().getNameLegacy();
 		String reason   = event.getReason();
@@ -78,7 +78,7 @@ public class DiscordBot {
 	}
 
 	public void sendRelay(String message, RelayType type) {
-		if(!config.isRelayCommand()) return;
+		if(!config.isRelayCommandEnabled()) return;
 		String formatted = config.getRelayFormat().replace("%message%", message);
 		sendMessage(getPrefix(type) + formatted, false);
 	}
