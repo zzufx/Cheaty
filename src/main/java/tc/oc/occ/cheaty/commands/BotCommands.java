@@ -15,7 +15,7 @@ public class BotCommands extends BaseCommand {
 
   @CommandAlias("relay")
   @Syntax("[message] - Message to relay to discord")
-  @CommandPermission("bolt.bot")
+  @CommandPermission("cheaty.bot")
   public void relay(CommandSender sender, String message) {
     bot.sendRelay(message, RelayType.COMMAND);
   }

@@ -10,9 +10,11 @@ import tc.oc.occ.cheaty.DiscordBot.RelayType;
 public class BotListener implements Listener {
 
   private final DiscordBot bot;
+  private final BotConfig config;
 
-  public BotListener(DiscordBot bot) {
+  public BotListener(DiscordBot bot, BotConfig config) {
     this.bot = bot;
+    this.config = config;
   }
 
   @EventHandler
@@ -27,6 +29,12 @@ public class BotListener implements Listener {
 
   @EventHandler
   public void onMorpheusNotify(NotifyCommandEvent event) {
-    bot.sendRelay(event.getCommand(), RelayType.MATRIX);
+    String command = event.getCommand();
+
+    if (config.isCommunityMatrixConverted()) {
+      command = CheatyUtils.convertCommunityRenderedName(command);
+    }
+
+    bot.sendRelay(command, RelayType.MATRIX);
   }
 }

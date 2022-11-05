@@ -13,9 +13,9 @@ public class AdminCommands extends BaseCommand {
 
   @Dependency private Cheaty plugin;
 
-  @CommandAlias("bolty")
-  @Description("Reload bolty config")
-  @CommandPermission("bolt.admin")
+  @CommandAlias("cheaty")
+  @Description("Reload cheaty config")
+  @CommandPermission("cheaty.admin")
   public void reload(CommandSender sender) {
     plugin.reloadBotConfig();
     sender.sendMessage(color("&a&lReloaded config!"));

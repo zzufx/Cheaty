@@ -32,7 +32,7 @@ public class Cheaty extends JavaPlugin {
   }
 
   private void registerListeners() {
-    this.getServer().getPluginManager().registerEvents(new BotListener(bot), this);
+    this.getServer().getPluginManager().registerEvents(new BotListener(bot, config), this);
   }
 
   public void reloadBotConfig() {

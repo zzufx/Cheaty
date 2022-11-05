@@ -37,3 +37,8 @@ prefix:
   autokill: ":mouse_three_button: "
   matrix: ":warning: "
   command: ""
+  
+# ETC - Extra config values
+etc:
+  # Whether a username conversion should be done on matrix command input (solves rendering issue)
+  matrix-community: true 
