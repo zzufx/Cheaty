@@ -13,8 +13,8 @@ import org.javacord.api.DiscordApiBuilder;
 public class DiscordBot {
 
   private DiscordApi api;
-  private BotConfig config;
-  private Logger logger;
+  private final BotConfig config;
+  private final Logger logger;
 
   public DiscordBot(BotConfig config, Logger logger) {
     this.config = config;
@@ -26,7 +26,19 @@ public class DiscordBot {
     return config;
   }
 
-  public void enable() {
+  private void setAPI(DiscordApi api) {
+    this.api = api;
+  }
+
+  public void reload() {
+    if (this.api != null && !config.isEnabled()) {
+      disable();
+    } else if (this.api == null && config.isEnabled()) {
+      enable();
+    }
+  }
+
+  private void enable() {
     if (config.isEnabled()) {
       logger.info("Enabling DiscordBot...");
       new DiscordApiBuilder()
@@ -45,10 +57,6 @@ public class DiscordBot {
                 logger.info("Cheaty has connected to Discord!");
               });
     }
-  }
-
-  private void setAPI(DiscordApi api) {
-    this.api = api;
   }
 
   public void disable() {
@@ -103,14 +111,6 @@ public class DiscordBot {
     if (!config.isRelayCommandEnabled()) return;
     String formatted = config.getRelayFormat().replace("%message%", message);
     sendMessage(getPrefix(type) + formatted, false);
-  }
-
-  public void reload() {
-    if (this.api != null && !config.isEnabled()) {
-      disable();
-    } else if (this.api == null && config.isEnabled()) {
-      enable();
-    }
   }
 
   private String format(String text) {

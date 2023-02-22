@@ -25,8 +25,6 @@ public class BotConfig {
   private String reportChannel;
   private String cheatChannel;
 
-  private boolean communityMatrixConversion;
-
   public BotConfig(Configuration config) {
     reload(config);
   }
@@ -53,8 +51,6 @@ public class BotConfig {
 
     this.reportChannel = config.getString("channels.reports");
     this.cheatChannel = config.getString("channels.anticheat");
-
-    this.communityMatrixConversion = config.getBoolean("etc.matrix-community");
   }
 
   public boolean isEnabled() {
@@ -115,9 +111,5 @@ public class BotConfig {
 
   public String getAntiCheatChannel() {
     return cheatChannel;
-  }
-
-  public boolean isCommunityMatrixConverted() {
-    return communityMatrixConversion;
   }
 }

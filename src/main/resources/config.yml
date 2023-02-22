@@ -4,7 +4,7 @@ token: "" # Discord bot token
 server: "" # ID of discord server
 
 # Minecraft server display-name
-server-name: "bolt" # Server name
+server-name: "occ" # Server name
 
 channels:
   reports: "" # ID of channel where reports are sent
@@ -38,7 +38,3 @@ prefix:
   matrix: ":warning: "
   command: ""
   
-# ETC - Extra config values
-etc:
-  # Whether a username conversion should be done on matrix command input (solves rendering issue)
-  matrix-community: true 

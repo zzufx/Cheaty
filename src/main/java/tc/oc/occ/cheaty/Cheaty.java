@@ -23,6 +23,11 @@ public class Cheaty extends JavaPlugin {
     this.registerListeners();
   }
 
+  @Override
+  public void onDisable() {
+    this.bot.disable();
+  }
+
   public void setupCommands() {
     this.commands = new BukkitCommandManager(this);
     commands.registerDependency(DiscordBot.class, bot);

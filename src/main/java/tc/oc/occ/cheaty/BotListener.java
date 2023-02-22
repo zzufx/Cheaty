@@ -29,12 +29,6 @@ public class BotListener implements Listener {
 
   @EventHandler
   public void onMorpheusNotify(NotifyCommandEvent event) {
-    String command = event.getCommand();
-
-    if (config.isCommunityMatrixConverted()) {
-      command = CheatyUtils.convertCommunityRenderedName(command);
-    }
-
-    bot.sendRelay(command, RelayType.MATRIX);
+    bot.sendRelay(event.getCommand(), RelayType.MATRIX);
   }
 }

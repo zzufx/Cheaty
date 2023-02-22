@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>tc.oc.occ</groupId>
     <artifactId>Cheaty</artifactId>
-    <version>1.1.0-SNAPSHOT</version>
+    <version>1.1.1-SNAPSHOT</version>
     <name>Bolty</name>
     <description>A minecraft to discord java plugin for anti-cheat logging</description>
 
@@ -10,8 +10,9 @@
     <!-- Repository Locations -->
     <repositories>
         <repository>
-            <id>ashcon-repo</id>
-            <url>https://repo.ashcon.app/content/repositories/snapshots</url>
+            <id>pgm-repo-snapshots</id>
+            <name>PGM Repository</name>
+            <url>https://repo.pgm.fyi/snapshots</url>
         </repository>
         <repository>
             <id>snapshots-repo</id>
@@ -39,13 +40,13 @@
         <dependency>
             <groupId>tc.oc.PGM</groupId>
             <artifactId>core</artifactId>
-            <version>0.15-SNAPSHOT</version>
+            <version>0.16-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>tc.oc.pgm</groupId>
             <artifactId>util</artifactId>
-            <version>0.15-SNAPSHOT</version>
+            <version>0.16-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -57,7 +58,7 @@
         <dependency>
             <groupId>dev.pgm</groupId>
             <artifactId>Community</artifactId>
-            <version>0.1-SNAPSHOT</version>
+            <version>0.2-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
