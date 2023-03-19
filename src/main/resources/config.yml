@@ -44,8 +44,8 @@ prefix:
   matrix: ":warning: "
   command: ""
   
-# Morpheus - Enables clickable and visually enhanced notifications for matric violations.
-morpheus:
+# Cheat notify - Enables clickable and visually enhanced notifications for matrix violations.
+cheat-notify:
   enabled: true
   # Permission node requred for viewing altered notifications
   permission-node: matrix.notify

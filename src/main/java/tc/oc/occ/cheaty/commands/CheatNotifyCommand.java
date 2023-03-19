@@ -26,18 +26,18 @@ import tc.oc.pgm.util.Audience;
 import tc.oc.pgm.util.named.NameStyle;
 import tc.oc.pgm.util.text.TextTranslations;
 
-public class MorpheusCommands extends BaseCommand {
+public class CheatNotifyCommand extends BaseCommand {
 
   @Dependency private BotConfig config;
   @Dependency private DiscordBot bot;
 
-  @CommandAlias("morpheus")
+  @CommandAlias("cheaty notify")
   @Syntax("[player] [message]")
-  @CommandPermission("morpheus.notify")
+  @CommandPermission("cheaty.notify")
   public void notify(CommandSender sender, String target, String message) {
 
-    if (!config.isMorpheusEnabled()) {
-      sender.sendMessage(ChatColor.RED + "Morpheus alerts are not enabled - Check the config.yml");
+    if (!config.isCheatNotifyEnabled()) {
+      sender.sendMessage(ChatColor.RED + "Cheat alerts are not enabled - Check the config.yml");
       return;
     }
 
@@ -56,7 +56,7 @@ public class MorpheusCommands extends BaseCommand {
 
     Component formatted =
         text()
-            .append(config.getMorpheusPrefix())
+            .append(config.getCheatNotifyPrefix())
             .append(space())
             .append(formattedTrigger)
             .append(space())
@@ -64,7 +64,7 @@ public class MorpheusCommands extends BaseCommand {
             .build();
 
     Bukkit.getOnlinePlayers().stream()
-        .filter(user -> user.hasPermission(config.getMorpheusPermission()))
+        .filter(user -> user.hasPermission(config.getCheatNotifyPermission()))
         .map(Audience::get)
         .forEach(viewer -> viewer.sendMessage(formatted));
 

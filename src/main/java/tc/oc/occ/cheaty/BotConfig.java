@@ -28,9 +28,9 @@ public class BotConfig {
   private String reportChannel;
   private String cheatChannel;
 
-  private boolean morpheusEnabled;
-  private String morpheusPermission;
-  private Component morpheusPrefix;
+  private boolean cheatNotifyEnabled;
+  private String cheatNotifyPermission;
+  private Component cheatNotifyPrefix;
 
   private boolean pingsEnabled;
   private int reportThreshold;
@@ -68,11 +68,11 @@ public class BotConfig {
     this.reportChannel = config.getString("channels.reports");
     this.cheatChannel = config.getString("channels.anticheat");
 
-    this.morpheusEnabled = config.getBoolean("morpheus.enabled");
-    this.morpheusPermission = config.getString("morpheus.permission-node");
-    this.morpheusPrefix =
+    this.cheatNotifyEnabled = config.getBoolean("cheat-notify.enabled");
+    this.cheatNotifyPermission = config.getString("cheat-notify.permission-node");
+    this.cheatNotifyPrefix =
         LegacyComponentSerializer.legacyAmpersand()
-            .deserialize(config.getString("morpheus.alert-prefix"));
+            .deserialize(config.getString("cheat-notify.alert-prefix"));
 
     this.pingsEnabled = config.getBoolean("pings.enabled");
     this.reportThreshold = config.getInt("pings.report-threshold");
@@ -143,16 +143,16 @@ public class BotConfig {
     return cheatChannel;
   }
 
-  public boolean isMorpheusEnabled() {
-    return morpheusEnabled;
+  public boolean isCheatNotifyEnabled() {
+    return cheatNotifyEnabled;
   }
 
-  public String getMorpheusPermission() {
-    return morpheusPermission;
+  public String getCheatNotifyPermission() {
+    return cheatNotifyPermission;
   }
 
-  public Component getMorpheusPrefix() {
-    return morpheusPrefix;
+  public Component getCheatNotifyPrefix() {
+    return cheatNotifyPrefix;
   }
 
   public boolean isPingEnabled() {

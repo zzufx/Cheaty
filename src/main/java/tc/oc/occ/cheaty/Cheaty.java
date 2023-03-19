@@ -4,7 +4,7 @@ import co.aikar.commands.BukkitCommandManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import tc.oc.occ.cheaty.commands.AdminCommands;
 import tc.oc.occ.cheaty.commands.BotCommands;
-import tc.oc.occ.cheaty.commands.MorpheusCommands;
+import tc.oc.occ.cheaty.commands.CheatNotifyCommand;
 
 public class Cheaty extends JavaPlugin {
 
@@ -35,7 +35,7 @@ public class Cheaty extends JavaPlugin {
     commands.registerDependency(BotConfig.class, config);
     commands.registerCommand(new BotCommands());
     commands.registerCommand(new AdminCommands());
-    commands.registerCommand(new MorpheusCommands());
+    commands.registerCommand(new CheatNotifyCommand());
   }
 
   private void registerListeners() {
