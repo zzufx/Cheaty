@@ -44,14 +44,22 @@ prefix:
   matrix: ":warning: "
   command: ""
   
-# Cheat notify - Enables clickable and visually enhanced notifications for matrix violations.
+# Cheat notifications - Enables clickable and visually enhanced notifications for anticheat violations.
 cheat-notify:
   enabled: true
   # Permission node requred for viewing altered notifications
   permission-node: matrix.notify
   # Alert prefix used to format notifications
   alert-prefix: "&f[&6AC&f]"
-  
+
+# AutoKiller notifications
+ak-notify:
+  enabled: true
+  # Alert prefix used to format notifications
+  ak-alert-prefix: "&f[&6AK&f]"
+  # Text used to distinguish AK messages
+  ak-text: "is suspected for"
+
 # Pings
 pings:
   enabled: true

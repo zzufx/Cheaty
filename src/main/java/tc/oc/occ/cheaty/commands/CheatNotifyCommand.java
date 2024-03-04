@@ -56,9 +56,17 @@ public class CheatNotifyCommand extends BaseCommand {
     // Create component from formatted '&' string
     TextComponent notification = LegacyComponentSerializer.legacyAmpersand().deserialize(message);
 
+    Component msgPrefix;
+
+    if (message.contains(config.getAKText()) && config.isAKNotifyEnabled()) {
+      msgPrefix = config.getAKNotifyPrefix();
+    } else {
+      msgPrefix = config.getCheatNotifyPrefix();
+    }
+
     Component formatted =
         text()
-            .append(config.getCheatNotifyPrefix())
+            .append(msgPrefix)
             .append(space())
             .append(formattedTrigger)
             .append(space())
@@ -75,6 +83,10 @@ public class CheatNotifyCommand extends BaseCommand {
     // Replace '§' chars with '&' as translate legacy uses these
     String legacyString = TextTranslations.translateLegacy(formatted).replace('§', '&');
 
-    bot.sendRelay(legacyString, RelayType.MATRIX);
+    if (message.contains(config.getAKText()) && config.isAKNotifyEnabled()) {
+      bot.sendRelay(legacyString, RelayType.AUTOKILL);
+    } else {
+      bot.sendRelay(legacyString, RelayType.MATRIX);
+    }
   }
 }
