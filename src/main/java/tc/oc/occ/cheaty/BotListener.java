@@ -1,10 +1,8 @@
 package tc.oc.occ.cheaty;
 
 import dev.pgm.community.events.PlayerReportEvent;
-import net.climaxmc.autokiller.events.AutoKillCheatEvent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import tc.oc.occ.cheaty.DiscordBot.RelayType;
 
 public class BotListener implements Listener {
 
@@ -21,8 +19,10 @@ public class BotListener implements Listener {
     bot.sendReport(event);
   }
 
+  /*
   @EventHandler
   public void onAutoKillerViolation(AutoKillCheatEvent event) {
     bot.sendRelay(event.getAlert(), RelayType.AUTOKILL);
   }
+  */
 }

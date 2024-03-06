@@ -32,6 +32,10 @@ public class BotConfig {
   private String cheatNotifyPermission;
   private Component cheatNotifyPrefix;
 
+  private boolean akNotifyEnabled;
+  private String akNotifyPermission;
+  private Component akNotifyPrefix;
+
   private boolean pingsEnabled;
   private int reportThreshold;
   private int reportWindow;
@@ -73,6 +77,12 @@ public class BotConfig {
     this.cheatNotifyPrefix =
         LegacyComponentSerializer.legacyAmpersand()
             .deserialize(config.getString("cheat-notify.alert-prefix"));
+
+    this.akNotifyEnabled = config.getBoolean("ak-notify.enabled");
+    this.akNotifyPermission = config.getString("ak-notify.permission-node");
+    this.akNotifyPrefix =
+        LegacyComponentSerializer.legacyAmpersand()
+            .deserialize(config.getString("ak-notify.alert-prefix"));
 
     this.pingsEnabled = config.getBoolean("pings.enabled");
     this.reportThreshold = config.getInt("pings.report-threshold");
@@ -153,6 +163,18 @@ public class BotConfig {
 
   public Component getCheatNotifyPrefix() {
     return cheatNotifyPrefix;
+  }
+
+  public boolean isAKNotifyEnabled() {
+    return akNotifyEnabled;
+  }
+
+  public String getAKNotifyPermission() {
+    return akNotifyPermission;
+  }
+
+  public Component getAKNotifyPrefix() {
+    return akNotifyPrefix;
   }
 
   public boolean isPingEnabled() {

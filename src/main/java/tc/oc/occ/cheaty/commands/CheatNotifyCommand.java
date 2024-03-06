@@ -34,12 +34,18 @@ public class CheatNotifyCommand extends BaseCommand {
   @Dependency private DiscordBot bot;
 
   @Subcommand("notify")
-  @Syntax("[player] [message]")
+  @Syntax("[type] [player] [message]")
   @CommandPermission("cheaty.notify")
-  public void notify(CommandSender sender, String target, String message) {
+  public void notify(CommandSender sender, Boolean isAK, String target, String message) {
 
-    if (!config.isCheatNotifyEnabled()) {
+    if (!config.isCheatNotifyEnabled() && !isAK) {
       sender.sendMessage(ChatColor.RED + "Cheat alerts are not enabled - Check the config.yml");
+      return;
+    }
+
+    if (!config.isAKNotifyEnabled() && isAK) {
+      sender.sendMessage(
+          ChatColor.RED + "AutoKiller alerts are not enabled - Check the config.yml");
       return;
     }
 
@@ -58,7 +64,7 @@ public class CheatNotifyCommand extends BaseCommand {
 
     Component formatted =
         text()
-            .append(config.getCheatNotifyPrefix())
+            .append(isAK ? config.getAKNotifyPrefix() : config.getCheatNotifyPrefix())
             .append(space())
             .append(formattedTrigger)
             .append(space())
@@ -66,7 +72,10 @@ public class CheatNotifyCommand extends BaseCommand {
             .build();
 
     Bukkit.getOnlinePlayers().stream()
-        .filter(user -> user.hasPermission(config.getCheatNotifyPermission()))
+        .filter(
+            user ->
+                user.hasPermission(
+                    isAK ? config.getAKNotifyPermission() : config.getCheatNotifyPermission()))
         .map(Audience::get)
         .forEach(viewer -> viewer.sendMessage(formatted));
 
@@ -75,6 +84,10 @@ public class CheatNotifyCommand extends BaseCommand {
     // Replace '§' chars with '&' as translate legacy uses these
     String legacyString = TextTranslations.translateLegacy(formatted).replace('§', '&');
 
-    bot.sendRelay(legacyString, RelayType.MATRIX);
+    if (isAK) {
+      bot.sendRelay(legacyString, RelayType.AUTOKILL);
+    } else {
+      bot.sendRelay(legacyString, RelayType.MATRIX);
+    }
   }
 }
