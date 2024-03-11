@@ -8,6 +8,7 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
+import net.climaxmc.autokiller.events.AutoKillCheatEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -89,6 +90,11 @@ public class DiscordBot {
     return Optional.empty();
   }
 
+  private String getUsername(UUID playerId) {
+    Player player = Bukkit.getPlayer(playerId);
+    return player != null ? player.getName() : null;
+  }
+
   private void sendMessage(String message, boolean report) {
     if (api != null) {
       api.getServerById(config.getDiscordServerId())
@@ -129,15 +135,16 @@ public class DiscordBot {
     }
   }
 
-  private String getUsername(UUID playerId) {
-    Player player = Bukkit.getPlayer(playerId);
-    return player != null ? player.getName() : null;
-  }
-
   public void sendRelay(String message, RelayType type) {
     if (!config.isRelayCommandEnabled()) return;
     String formatted = config.getRelayFormat().replace("%message%", message);
     sendMessage(getPrefix(type) + formatted, false);
+  }
+
+  public void sendAutoKiller(AutoKillCheatEvent event) {
+    if (!config.isAutoKillerEnabled()) return;
+    String formatted = config.getRelayFormat().replace("%message%", event.getAlert());
+    sendMessage(getPrefix(RelayType.AUTOKILL) + formatted, false);
   }
 
   public void sendReportPing(Report report, int numReports) {

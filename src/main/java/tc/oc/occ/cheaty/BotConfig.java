@@ -16,6 +16,7 @@ public class BotConfig {
 
   private boolean reportsEnabled;
   private boolean relayCommandEnabled;
+  private boolean autoKillerEnabled;
 
   private String reportFormat;
   private String relayFormat;
@@ -56,6 +57,7 @@ public class BotConfig {
 
     this.reportsEnabled = config.getBoolean("types.reports");
     this.relayCommandEnabled = config.getBoolean("types.relay-command");
+    this.autoKillerEnabled = config.getBoolean("types.auto-killer");
 
     this.reportFormat = config.getString("report-format");
     this.relayFormat = config.getString("relay-format");
@@ -105,6 +107,10 @@ public class BotConfig {
 
   public boolean isRelayCommandEnabled() {
     return relayCommandEnabled;
+  }
+
+  public boolean isAutoKillerEnabled() {
+    return autoKillerEnabled;
   }
 
   public String getReportFormat() {

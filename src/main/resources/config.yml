@@ -20,6 +20,7 @@ channels:
 types:
   reports: true
   relay-command: true
+  auto-killer: true
 
 # Reports (Sent from PGM)
 #
